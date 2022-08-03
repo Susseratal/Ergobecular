@@ -14,5 +14,5 @@ My Ergodox is the Shine variant, so if you have the Glow or non LED variants, it
 
 Do let me know what you think of the keyboards when they're done and what you think of the layouts I've written for them because I'd be very interested to know if anyone else can actually use them. 
 
-Cheers, 
+Cheers,  
 ~ Iain xx
