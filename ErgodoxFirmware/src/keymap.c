@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [1] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT,KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_F6,                                          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_TRANSPARENT,
     KC_MEDIA_PREV_TRACK, LCTL(KC_W),     LCTL(KC_RIGHT), LCTL(KC_L),     LCTL(KC_Y),     KC_TRANSPARENT, KC_TRANSPARENT,                                     KC_TRANSPARENT, LCTL(KC_C),     LCTL(KC_Z),     ST_MACRO_9,        ST_MACRO_2,     ST_MACRO_3,     KC_MEDIA_NEXT_TRACK,
-    KC_TRANSPARENT,      ST_MACRO_10,    LCTL(KC_S),     ST_MACRO_0,     KC_TRANSPARENT, TD(DANCE_1),                                                                    KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,
+    KC_TRANSPARENT,      ST_MACRO_10,    LCTL(KC_S),     LCTL(KC_DELETE),     KC_TRANSPARENT, TD(DANCE_1),                                                                    KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_11,    ST_MACRO_1,     KC_INSERT,      LCTL(KC_LEFT),  KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(UK_F),     KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_MS_WH_LEFT,  KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_WH_RIGHT,
@@ -132,7 +132,7 @@ bool suspended = false;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
-    if (record->event.pressed) { // delete a word
+    if (record->event.pressed) { // delete a word - may have obseleted this by just using ctrl + delete
       SEND_STRING(SS_LCTL(SS_LSFT(SS_TAP(X_RIGHT))) SS_DELAY(60) SS_TAP(X_BSPACE));
     }
     break;
