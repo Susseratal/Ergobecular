@@ -60,8 +60,7 @@ enum custom_keycodes {
   ST_MACRO_8,
   ST_MACRO_9,
   ST_MACRO_10,
-  ST_MACRO_11, 
-  ST_MACRO_12
+  ST_MACRO_11
 };
 
 enum tap_dance_codes {
@@ -72,55 +71,70 @@ enum tap_dance_codes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
-    LALT(KC_TAB),                 UK_1,           UK_2,           UK_3,           UK_4,           UK_5,           UK_6,                                           UK_7,           UK_8,           UK_9,           UK_0,           KC_MINUS,       KC_EQUAL,       TG(3),
-    LCTL(KC_TAB),                 KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_PSCREEN,                                 TO(4), KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_MEH,
-    MT(MOD_LCTL,  KC_ESCAPE),     KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           UK_SCLN,        KC_LGUI,
-    KC_LSHIFT,                    KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           RGB_TOG,                                 CAPS_WORD, KC_N,           KC_M,           UK_COMM,        UK_DOT,         UK_SLSH,        KC_LSHIFT,
-    KC_LCTRL,                     UK_BSLS,        TD(DANCE_0),    KC_LALT,        TT(1),                                                                                                          TT(2),          UK_QUOT,        UK_DQUO,        UK_HASH,        KC_DELETE,
-                                                                                                    KC_LPRN,        KC_LBRACKET,    KC_RBRACKET,    KC_RPRN,
-                                                                                                                    KC_LCBR,        KC_RCBR,
-                                                                                    KC_SPACE,       KC_TAB,         KC_LABK,        KC_RABK,        KC_ENTER,       KC_BSPACE
+    LALT(KC_TAB),                 UK_1,      UK_2,           UK_3,      UK_4,    UK_5,   UK_6,                                                                 UK_7,        UK_8,   UK_9,    UK_0,      KC_MINUS,   KC_EQUAL,   TG(3),
+    LCTL(KC_TAB),                 KC_Q,      KC_W,           KC_E,      KC_R,    KC_T,   KC_PSCREEN,                                                           TO(4),       KC_Y,   KC_U,    KC_I,      KC_O,       KC_P,       KC_MEH,
+    MT(MOD_LCTL,  KC_ESCAPE),     KC_A,      KC_S,           KC_D,      KC_F,    KC_G,                                                                                      KC_H,   KC_J,    KC_K,      KC_L,       UK_SCLN,    KC_LGUI,
+    KC_LSHIFT,                    KC_Z,      KC_X,           KC_C,      KC_V,    KC_B,   TOGGLE_LAYER_COLOR,                                                   CAPS_WORD,   KC_N,   KC_M,    UK_COMM,   UK_DOT,     UK_SLSH,    KC_LSHIFT,
+    KC_LCTRL,                     UK_BSLS,   TD(DANCE_0),    KC_LALT,   TT(1),                                                                                                      TT(2),   UK_QUOT,   UK_DQUO,    UK_HASH,    KC_DELETE,
+                                                                                                             KC_LPRN,   KC_LBRACKET,   KC_RBRACKET,   KC_RPRN,       
+                                                                                                                        KC_LCBR,       KC_RCBR,
+                                                                                                 KC_SPACE,   KC_TAB,    KC_LABK,       KC_RABK,       KC_ENTER,   KC_BSPACE
   ),
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   [1] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT,KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_F6,                                          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_TRANSPARENT,
-    KC_MEDIA_PREV_TRACK, LCTL(KC_W),     LCTL(KC_RIGHT), LCTL(KC_L),     LCTL(KC_Y),     KC_TRANSPARENT, KC_TRANSPARENT,                                     KC_TRANSPARENT, LCTL(KC_C),     LCTL(KC_Z),     ST_MACRO_9,        ST_MACRO_2,     ST_MACRO_3,     KC_MEDIA_NEXT_TRACK,
-    KC_TRANSPARENT,      ST_MACRO_10,    LCTL(KC_S),     LCTL(KC_DELETE),     KC_TRANSPARENT, TD(DANCE_1),                                                                    KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_11,    ST_MACRO_1,     KC_INSERT,      LCTL(KC_LEFT),  KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(UK_F),     KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_MS_WH_LEFT,  KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_WH_RIGHT,
-                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_PGUP,        KC_PGDOWN,      KC_TRANSPARENT, LCTL(KC_BSPACE)
+    KC_TRANSPARENT,        KC_F1,            KC_F2,            KC_F3,             KC_F4,            KC_F5,            KC_F6,                                                                                  KC_F7,            KC_F8,            KC_F9,            KC_F10,           KC_F11,           KC_F12,                KC_TRANSPARENT,
+    KC_MEDIA_PREV_TRACK,   LCTL(KC_W),       LCTL(KC_RIGHT),   LCTL(KC_L),        LCTL(KC_Y),       KC_TRANSPARENT,   KC_TRANSPARENT,                                                                         KC_TRANSPARENT,   LCTL(KC_C),       LCTL(KC_Z),       ST_MACRO_8,       ST_MACRO_1,       ST_MACRO_2,            KC_MEDIA_NEXT_TRACK,
+    KC_TRANSPARENT,        ST_MACRO_9,       LCTL(KC_S),       LCTL(KC_DELETE),   KC_TRANSPARENT,   TD(DANCE_1),                                                                                                                KC_LEFT,          KC_DOWN,          KC_UP,            KC_RIGHT,         KC_MEDIA_PLAY_PAUSE,   KC_TRANSPARENT,
+    KC_TRANSPARENT,        KC_TRANSPARENT,   ST_MACRO_10,      ST_MACRO_0,        KC_INSERT,        LCTL(KC_LEFT),    KC_TRANSPARENT,                                                                         KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   LCTL(UK_F),            KC_TRANSPARENT,
+    KC_TRANSPARENT,        KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,    KC_TRANSPARENT,                                                                                                                                                 KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   RGB_TOG,               KC_TRANSPARENT,
+                                                                                                                                        KC_MS_WH_LEFT,    KC_MS_WH_DOWN,    KC_MS_WH_UP,      KC_MS_WH_RIGHT,
+                                                                                                                                                          KC_TRANSPARENT,   KC_TRANSPARENT,   
+                                                                                                                      KC_TRANSPARENT,   KC_TRANSPARENT,   KC_PGUP,          KC_PGDOWN,        KC_TRANSPARENT,   LCTL(KC_BSPACE)
   ),
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   [2] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT,LCTL(KC_1),     LCTL(KC_2),     LCTL(KC_3),     LCTL(KC_4),     LCTL(KC_5),     LCTL(KC_6),                                     LCTL(KC_7),     LCTL(KC_8),     LCTL(KC_9),     KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_TRANSPARENT,
-    KC_MEDIA_PREV_TRACK, LCTL(KC_W),     LCTL(KC_RIGHT), LCTL(KC_L),     LCTL(KC_R),     KC_TRANSPARENT, KC_PSCREEN,                                     KC_TRANSPARENT, ST_MACRO_6,     LCTL(KC_Z),     KC_HOME,        ST_MACRO_7,     ST_MACRO_8,     KC_MEDIA_NEXT_TRACK,
-    KC_TRANSPARENT,      KC_END,         LCTL(KC_S),     ST_MACRO_4,     KC_TRANSPARENT, TD(DANCE_2),                                                                    KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_12,    ST_MACRO_5,     KC_INSERT,      LCTL(KC_LEFT),  KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(UK_F),     KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_MS_ACCEL0,   KC_MS_ACCEL1,   KC_MS_ACCEL2,   KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_MS_WH_LEFT,  KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_WH_RIGHT,
-                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_MS_BTN1,     KC_TRANSPARENT, KC_PGUP,        KC_PGDOWN,      KC_TRANSPARENT, KC_MS_BTN2
+    KC_TRANSPARENT,        LCTL(KC_1),       LCTL(KC_2),       LCTL(KC_3),     LCTL(KC_4),       LCTL(KC_5),       LCTL(KC_6),                                                                           LCTL(KC_7),       LCTL(KC_8),       LCTL(KC_9),       KC_AUDIO_MUTE,    KC_AUDIO_VOL_DOWN,   KC_AUDIO_VOL_UP,       KC_TRANSPARENT,
+    KC_MEDIA_PREV_TRACK,   LCTL(KC_W),       LCTL(KC_RIGHT),   LCTL(KC_L),     LCTL(KC_R),       KC_TRANSPARENT,   KC_PSCREEN,                                                                           KC_TRANSPARENT,   ST_MACRO_5,       LCTL(KC_Z),       KC_HOME,          ST_MACRO_6,          ST_MACRO_7,            KC_MEDIA_NEXT_TRACK,
+    KC_TRANSPARENT,        KC_END,           LCTL(KC_S),       ST_MACRO_3,     KC_TRANSPARENT,   TD(DANCE_2),                                                                                                              KC_MS_LEFT,       KC_MS_DOWN,       KC_MS_UP,         KC_MS_RIGHT,         KC_MEDIA_PLAY_PAUSE,   KC_TRANSPARENT,
+    KC_TRANSPARENT,        KC_TRANSPARENT,   ST_MACRO_11,      ST_MACRO_4,     KC_INSERT,        LCTL(KC_LEFT),    KC_TRANSPARENT,                                                                       KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,      LCTL(UK_F),            KC_TRANSPARENT,
+    KC_TRANSPARENT,        KC_MS_ACCEL0,     KC_MS_ACCEL1,     KC_MS_ACCEL2,   KC_TRANSPARENT,                                                                                                                                               KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,      KC_TRANSPARENT,        KC_TRANSPARENT,
+                                                                                                                                   KC_MS_WH_LEFT,    KC_MS_WH_DOWN,    KC_MS_WH_UP,      KC_MS_WH_RIGHT, 
+                                                                                                                                                     KC_TRANSPARENT,   KC_TRANSPARENT,   
+                                                                                                                     KC_MS_BTN1,   KC_TRANSPARENT,   KC_PGUP,          KC_PGDOWN,        KC_TRANSPARENT,   KC_MS_BTN2
   ),
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   [3] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_4,        KC_KP_5,        KC_KP_6,                                        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_0,        KC_TRANSPARENT, KC_NUMLOCK,     KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_DELETE,      KC_MS_BTN1,     LALT(LCTL(KC_L)),LCTL(KC_R),     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, LCTL(KC_C),     LCTL(KC_Z),     KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_V),     KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_S),     KC_MS_BTN2,     LCTL(KC_B),     KC_TRANSPARENT,                                                                 KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_TRANSPARENT, RGB_TOG,
-    KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_X),     KC_MS_ACCEL0, KC_MS_ACCEL1, KC_MS_ACCEL2, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MEDIA_PREV_TRACK,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_MEDIA_NEXT_TRACK,KC_AUDIO_MUTE,  KC_TRANSPARENT,
-    WEBUSB_PAIR,    KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LED_LEVEL,      RESET,
-                                                                                                    KC_MS_WH_LEFT,  KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_WH_RIGHT,
-                                                                                                                    RGB_VAD,        RGB_VAI,
-                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+    KC_TRANSPARENT,   KC_KP_1,          KC_KP_2,          KC_KP_3,            KC_KP_4,          KC_KP_5,          KC_KP_6,                                                                              KC_KP_7,          KC_KP_8,               KC_KP_9,             KC_KP_0,           KC_TRANSPARENT,        KC_NUMLOCK,       KC_TRANSPARENT,
+    KC_TRANSPARENT,   KC_DELETE,        KC_MS_BTN1,       LALT(LCTL(KC_L)),   LCTL(KC_R),       KC_TRANSPARENT,   KC_TRANSPARENT,                                                                       KC_TRANSPARENT,   LCTL(KC_C),            LCTL(KC_Z),          KC_TRANSPARENT,    KC_TRANSPARENT,        LCTL(KC_V),       KC_TRANSPARENT,
+    KC_TRANSPARENT,   KC_TRANSPARENT,   LCTL(KC_S),       KC_MS_BTN2,         LCTL(KC_B),       KC_TRANSPARENT,                                                                                                           KC_MS_LEFT,            KC_MS_DOWN,          KC_MS_UP,          KC_MS_RIGHT,           KC_TRANSPARENT,   RGB_TOG,
+    KC_TRANSPARENT,   KC_TRANSPARENT,   LCTL(KC_X),       KC_MS_ACCEL0,       KC_MS_ACCEL1,     KC_MS_ACCEL2,     KC_TRANSPARENT,                                                                       KC_TRANSPARENT,   KC_MEDIA_PREV_TRACK,   KC_AUDIO_VOL_DOWN,   KC_AUDIO_VOL_UP,   KC_MEDIA_NEXT_TRACK,   KC_AUDIO_MUTE,    KC_TRANSPARENT,
+    WEBUSB_PAIR,      KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,     KC_TRANSPARENT,                                                                                                                                                    KC_TRANSPARENT,      KC_TRANSPARENT,    KC_TRANSPARENT,        LED_LEVEL,        RESET,
+                                                                                                                                  KC_MS_WH_LEFT,    KC_MS_WH_DOWN,    KC_MS_WH_UP,      KC_MS_WH_RIGHT, 
+                                                                                                                                                    RGB_VAD,          RGB_VAI,
+                                                                                                                KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT
   ),
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   [4] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 TO(0),          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_SPACE,                                                                                                       TO(1),          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_TAB,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+    KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,                                                                       KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,
+    KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,                                                                       TO(0),            KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,
+    KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,                                                                                                           KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,
+    KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,                                                                       KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,
+    KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_SPACE,                                                                                                                                                     TO(1),            KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,
+                                                                                                                                KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT, 
+                                                                                                                                                  KC_TRANSPARENT,   KC_TRANSPARENT,   
+                                                                                                                      KC_TAB,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT
   ),
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 };
 
 
@@ -132,12 +146,6 @@ bool suspended = false;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
-    if (record->event.pressed) { // delete a word - may have obseleted this by just using ctrl + delete
-      SEND_STRING(SS_LCTL(SS_LSFT(SS_TAP(X_RIGHT))) SS_DELAY(60) SS_TAP(X_BSPACE));
-    }
-    break;
-
-    case ST_MACRO_1:
     if (record->event.pressed) { // clear to the end of the line
       SEND_STRING( SS_LSFT(SS_TAP(X_END)) SS_DELAY(80) SS_TAP(X_BSPACE));
       layer_invert(1); 
@@ -145,7 +153,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
     // break;
 
-    case ST_MACRO_2:
+    case ST_MACRO_1:
     if (record->event.pressed) { // insert on a new line
       SEND_STRING(SS_TAP(X_END) SS_DELAY(80) SS_TAP(X_ENTER));
       layer_invert(1);
@@ -153,19 +161,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
     // break;
 
-    case ST_MACRO_3:
+    case ST_MACRO_2:
     if (record->event.pressed) { // paste on the line below
       SEND_STRING(SS_TAP(X_END) SS_DELAY(100) SS_TAP(X_ENTER) SS_DELAY(100) SS_LCTL(SS_TAP(X_V)));
     }
     break;
 
-    case ST_MACRO_4:
+    case ST_MACRO_3:
     if (record->event.pressed) { // delete a whole line
       SEND_STRING(SS_TAP(X_HOME) SS_DELAY(100) SS_LSFT(SS_TAP(X_END)) SS_DELAY(100) SS_TAP(X_BSPACE));
     }
     break;
 
-    case ST_MACRO_5:
+    case ST_MACRO_4:
     if (record->event.pressed) { // clear a whole line and then go into insert mode
       SEND_STRING( SS_TAP(X_HOME) SS_DELAY(80) SS_LSFT(SS_TAP(X_END)) SS_DELAY(80) SS_TAP(X_BSPACE));
       layer_invert(2);
@@ -173,13 +181,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
     // break;
     
-    case ST_MACRO_6:
+    case ST_MACRO_5:
     if (record->event.pressed) { // copy the line 
       SEND_STRING(SS_TAP(X_HOME) SS_DELAY(100) SS_LSFT(SS_TAP(X_END)) SS_DELAY(100) SS_LCTL(SS_TAP(X_C)));
     }
     break;
 
-    case ST_MACRO_7:
+    case ST_MACRO_6:
     if (record->event.pressed) { // new line above
       SEND_STRING(SS_TAP(X_HOME) SS_DELAY(80) SS_TAP(X_ENTER) SS_DELAY(80) SS_TAP(X_UP));
       layer_invert(2);
@@ -187,34 +195,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
     // break;
 
-    case ST_MACRO_8:
+    case ST_MACRO_7:
     if (record->event.pressed) { // paste line above
       SEND_STRING(SS_TAP(X_HOME) SS_DELAY(100) SS_TAP(X_ENTER) SS_DELAY(100) SS_TAP(X_UP) SS_DELAY(100) SS_LCTL(SS_TAP(X_V)));
     }
     break;
 
-    case ST_MACRO_9:
+    case ST_MACRO_8:
     if (record->event.pressed) { // i key macro
         SEND_STRING(SS_TAP(X_HOME));
         layer_invert(1);
     }
     return false;
 
-    case ST_MACRO_10:
+    case ST_MACRO_9:
     if (record->event.pressed) { // a key macro
         SEND_STRING(SS_TAP(X_END));
         layer_invert(1);
     }
     return false;
 
-    case ST_MACRO_11:
+    case ST_MACRO_10:
     if (record->event.pressed) {
         SEND_STRING(SS_TAP(X_DELETE));
         layer_invert(1);
     }
     return false;
 
-    case ST_MACRO_12:
+    case ST_MACRO_11:
     if (record->event.pressed) {
         SEND_STRING(SS_TAP(X_DELETE));
         layer_invert(2);
