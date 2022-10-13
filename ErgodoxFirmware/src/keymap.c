@@ -60,7 +60,13 @@ enum custom_keycodes {
   ST_MACRO_8,
   ST_MACRO_9,
   ST_MACRO_10,
-  ST_MACRO_11
+  ST_MACRO_11,
+  ST_MACRO_12,
+  ST_MACRO_13,
+  ST_MACRO_14,
+  ST_MACRO_15,
+  ST_MACRO_16,
+  ST_MACRO_17
 };
 
 enum tap_dance_codes {
@@ -88,10 +94,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_MEDIA_PREV_TRACK,   LCTL(KC_W),       LCTL(KC_RIGHT),   LCTL(KC_L),        LCTL(KC_Y),       KC_TRANSPARENT,   KC_TRANSPARENT,                                                                         KC_TRANSPARENT,   LCTL(KC_C),       LCTL(KC_Z),       ST_MACRO_8,       ST_MACRO_1,       ST_MACRO_2,            KC_MEDIA_NEXT_TRACK,
     KC_TRANSPARENT,        ST_MACRO_9,       LCTL(KC_S),       LCTL(KC_DELETE),   KC_TRANSPARENT,   TD(DANCE_1),                                                                                                                KC_LEFT,          KC_DOWN,          KC_UP,            KC_RIGHT,         KC_MEDIA_PLAY_PAUSE,   KC_TRANSPARENT,
     KC_TRANSPARENT,        KC_TRANSPARENT,   ST_MACRO_10,      ST_MACRO_0,        KC_INSERT,        LCTL(KC_LEFT),    KC_TRANSPARENT,                                                                         KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   LCTL(UK_F),            KC_TRANSPARENT,
-    KC_TRANSPARENT,        KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,    KC_TRANSPARENT,                                                                                                                                                 KC_TRANSPARENT,   KC_TRANSPARENT,   RGB_MOD,          RGB_TOG,               KC_TRANSPARENT,
-                                                                                                                                        KC_MS_WH_LEFT,    KC_MS_WH_DOWN,    KC_MS_WH_UP,      KC_MS_WH_RIGHT,
-                                                                                                                                                          KC_TRANSPARENT,   KC_TRANSPARENT,   
-                                                                                                                      KC_TRANSPARENT,   KC_TRANSPARENT,   KC_PGUP,          KC_PGDOWN,        KC_TRANSPARENT,   LCTL(KC_BSPACE)
+    KC_TRANSPARENT,        KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,    KC_TRANSPARENT,                                                                                                                                                 KC_TRANSPARENT,   ST_MACRO_16,      ST_MACRO_17,      RGB_MOD,               RGB_TOG,
+                                                                                                                                        ST_MACRO_12,      ST_MACRO_13,   KC_TRANSPARENT,   KC_TRANSPARENT,
+                                                                                                                                                          ST_MACRO_14,   KC_TRANSPARENT,   
+                                                                                                                      KC_TRANSPARENT,   KC_TRANSPARENT,   ST_MACRO_15,   KC_TRANSPARENT,   KC_TRANSPARENT,   LCTL(KC_BSPACE)
   ),
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -228,6 +234,44 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_invert(2);
     }
     return false;
+
+    case ST_MACRO_12:
+    if (record->event.pressed) {
+        SEND_STRING(SS_LSFT(SS_TAP(X_9)) SS_DELAY(50) SS_LSFT(SS_TAP(X_0)) SS_DELAY(50) SS_TAP(X_LEFT));
+    }
+    return false;
+
+    case ST_MACRO_13:
+    if (record->event.pressed) {
+        SEND_STRING(SS_TAP(X_LBRACKET) SS_DELAY(50) SS_TAP(X_RBRACKET) SS_DELAY(50) SS_TAP(X_LEFT));
+    }
+    return false;
+
+    case ST_MACRO_14:
+    if (record->event.pressed) {
+        SEND_STRING(SS_LSFT(SS_TAP(X_LBRACKET)) SS_DELAY(50) SS_LSFT(SS_TAP(X_RBRACKET)) SS_DELAY(50) SS_TAP(X_LEFT));
+    }
+    return false;
+
+    case ST_MACRO_15:
+    if (record->event.pressed) {
+        SEND_STRING(SS_LSFT(SS_TAP(X_COMMA)) SS_DELAY(50) SS_LSFT(SS_TAP(X_DOT)) SS_DELAY(50) SS_TAP(X_LEFT));
+    }
+    return false;
+
+    case ST_MACRO_16:
+    if (record->event.pressed) {
+        SEND_STRING(SS_TAP(X_QUOTE) SS_DELAY(50) SS_TAP(X_QUOTE) SS_DELAY(50) SS_TAP(X_LEFT));
+    }
+    return false;
+
+    case ST_MACRO_17:
+    if (record->event.pressed) {
+        SEND_STRING(SS_LSFT(SS_TAP(X_QUOTE)) SS_DELAY(50) SS_LSFT(SS_TAP(X_QUOTE)) SS_DELAY(50) SS_TAP(X_LEFT));
+    }
+    return false;
+
+    // put a macro in here in order to delete a word and then layer switch - bind to 1C and then bind the clear a full line to 2C
 
     case RGB_SLD:
       if (record->event.pressed) {
