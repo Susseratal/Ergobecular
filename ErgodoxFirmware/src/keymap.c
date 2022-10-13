@@ -267,7 +267,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case ST_MACRO_17:
     if (record->event.pressed) {
-        SEND_STRING(SS_LSFT(SS_TAP(X_QUOTE)) SS_DELAY(50) SS_LSFT(SS_TAP(X_QUOTE)) SS_DELAY(50) SS_TAP(X_LEFT));
+        SEND_STRING(SS_LSFT(SS_TAP(X_2)) SS_DELAY(50) SS_LSFT(SS_TAP(X_2)) SS_DELAY(50) SS_TAP(X_LEFT));
     }
     return false;
 
