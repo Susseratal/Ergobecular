@@ -356,6 +356,7 @@ uint32_t layer_state_set_user(uint32_t state) {
           rgblight_sethsv_noeeprom(86,255,255);
         }
         break;
+        /*
       case 4:
         if(!disable_layer_color) {
           rgblight_enable_noeeprom();
@@ -364,6 +365,7 @@ uint32_t layer_state_set_user(uint32_t state) {
           // rgblight_sethsv_noeeprom(255,255,255);
         }
         break;
+        */
       default:
         if(!disable_layer_color) {
           rgblight_config.raw = eeconfig_read_rgblight();
