@@ -327,26 +327,27 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
     }
     switch (layer) {
-      case 0:
+      case 0: // layer 0 neon pink
         if(!disable_layer_color) {
           rgblight_enable_noeeprom();
           rgblight_mode_noeeprom(1);
           rgblight_sethsv_noeeprom(213,255,255);
         }
         break;
-      case 1:
+      case 1: // nav layer blue
         if(!disable_layer_color) {
           rgblight_enable_noeeprom();
           rgblight_mode_noeeprom(1);
-          rgblight_sethsv_noeeprom(119,235,255);
+          // rgblight_sethsv_noeeprom(119,235,255);
+          rgblight_sethsv_range(119,235,255, (uint8_t)RGBLED_NUM / 2, (uint8_t)RGBLED_NUM);
         }
         break;
-      case 2:
+      case 2: // mouse layer blue
         if(!disable_layer_color) {
           rgblight_enable_noeeprom();
           rgblight_mode_noeeprom(1);
-          rgblight_sethsv_noeeprom(119,235,255);
-          // rgblight_sethsv_noeeprom(159,255,255);
+          // rgblight_sethsv_noeeprom(119,235,255);
+          rgblight_sethsv_range(119,235,255, 0, (uint8_t)RGBLED_NUM / 2);
         }
         break;
       case 3:
