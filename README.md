@@ -14,10 +14,10 @@ The entire design will be completely open source for you to fork, configure, cus
 </p>
 
 
-## The EBPlank75
+## The EBPlank66
 The design of this board will be fundamentally similar to the Ergobecular, but with a few key differences. The first is that it will be a plank keyboard design, rather than a split one.  
 
-It will also be more of a 75% layout including a number row and various modifier keys. The Ergobecular, on the other hand, is closer to a 40%, lacking any dedicated number keys.  
+It will also be more of a 60% layout including a number row and various modifier keys. The Ergobecular, on the other hand, is closer to a 40%, lacking any dedicated number keys.  
 
 I think these design choices might make it more accessible to some people who are interested in weirder keyboards, but aren't quite ready to make the jump to a split type yet. This will provide a stepping stone into custom layouts and weird keymaps, as well as the ortholinear layout type, without being too daunting.  
 
@@ -25,10 +25,10 @@ The other advantage for me personally is that I can use an aftermarket case that
 
 Primarily, however, it will carry the same design ethos as the Ergobecular, focussing on being open source and configurable, as well as using 1 to 1.5 unit keys so that you don't have to worry about stabilisers, and can focus on tweaking keymaps and choosing switches.  
 
-Also I couldn't think of a better name, so it's the EBPlank75, which just stands for Ergobecular Plank 75, but lets quietly pretend I gave it a cooler name.
+Also I couldn't think of a better name, so it's the EBPlank66, which is because it's a 66 key plank variant of the Ergobecular, but lets quietly pretend I gave it a cooler name.
 
 <p align="left">
-  <img src="images/ebPlank.png" width="500" title="An early design for the EBPlank75">
+  <img src="images/ebPlank.png" width="500" title="An early design for the EBPlank66">
 </p>
 
 ## Ergodox firmware  
