@@ -67,7 +67,8 @@ enum custom_keycodes {
   ST_MACRO_15,
   ST_MACRO_16,
   ST_MACRO_17,
-  ST_MACRO_18
+  ST_MACRO_18,
+  ST_MACRO_19
 };
 
 enum tap_dance_codes {
@@ -75,6 +76,8 @@ enum tap_dance_codes {
   DANCE_1,
   DANCE_2,
 };
+
+bool visualLock = false;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
@@ -94,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT,        KC_F1,            KC_F2,            KC_F3,             KC_F4,            KC_F5,            KC_F6,                                                                                  KC_F7,            KC_F8,            KC_F9,            KC_F10,           KC_F11,           KC_F12,                KC_TRANSPARENT,
     KC_MEDIA_PREV_TRACK,   LCTL(KC_W),       LCTL(KC_RIGHT),   LCTL(KC_L),        LCTL(KC_Y),       ST_MACRO_18,      KC_TRANSPARENT,                                                                         KC_TRANSPARENT,   LCTL(KC_C),       LCTL(KC_Z),       ST_MACRO_8,       ST_MACRO_1,       ST_MACRO_2,            KC_MEDIA_NEXT_TRACK,
     KC_TRANSPARENT,        ST_MACRO_9,       LCTL(KC_S),       LCTL(KC_DELETE),   KC_TRANSPARENT,   TD(DANCE_1),                                                                                                                KC_LEFT,          KC_DOWN,          KC_UP,            KC_RIGHT,         KC_MEDIA_PLAY_PAUSE,   KC_TRANSPARENT,
-    KC_TRANSPARENT,        KC_TRANSPARENT,   ST_MACRO_10,      ST_MACRO_0,        KC_INSERT,        LCTL(KC_LEFT),    KC_TRANSPARENT,                                                                         KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   LCTL(UK_F),            KC_TRANSPARENT,
+    KC_TRANSPARENT,        KC_TRANSPARENT,   ST_MACRO_10,      ST_MACRO_0,        ST_MACRO_19,      LCTL(KC_LEFT),    KC_TRANSPARENT,                                                                         KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   LCTL(UK_F),            KC_TRANSPARENT,
     KC_TRANSPARENT,        KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,    KC_TRANSPARENT,                                                                                                                                                 KC_TRANSPARENT,   ST_MACRO_16,      ST_MACRO_17,      RGB_MOD,               RGB_TOG,
                                                                                                                                         ST_MACRO_12,      ST_MACRO_13,   KC_TRANSPARENT,   KC_TRANSPARENT,   
                                                                                                                                                           ST_MACRO_14,   KC_TRANSPARENT,   
@@ -154,7 +157,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) { // clear to the end of the line
-      SEND_STRING( SS_LSFT(SS_TAP(X_END)) SS_DELAY(80) SS_TAP(X_BSPACE));
+      SEND_STRING( SS_LSFT(SS_TAP(X_END)) SS_DELAY(60) SS_TAP(X_BSPACE));
+      SEND_STRING(SS_UP(X_LSFT)); 
+      visualLock = false;
       layer_invert(1); 
     }
     return false;
@@ -162,7 +167,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case ST_MACRO_1:
     if (record->event.pressed) { // insert on a new line
-      SEND_STRING(SS_TAP(X_END) SS_DELAY(80) SS_TAP(X_ENTER));
+      SEND_STRING(SS_TAP(X_END) SS_DELAY(60) SS_TAP(X_ENTER));
+      SEND_STRING(SS_UP(X_LSFT)); 
+      visualLock = false;
       layer_invert(1);
     }
     return false;
@@ -170,54 +177,60 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case ST_MACRO_2:
     if (record->event.pressed) { // paste on the line below
-      SEND_STRING(SS_TAP(X_END) SS_DELAY(100) SS_TAP(X_ENTER) SS_DELAY(100) SS_LCTL(SS_TAP(X_V)));
+      SEND_STRING(SS_TAP(X_END) SS_DELAY(60) SS_TAP(X_ENTER) SS_DELAY(60) SS_LCTL(SS_TAP(X_V)));
     }
     break;
 
     case ST_MACRO_3:
     if (record->event.pressed) { // delete a whole line
-      SEND_STRING(SS_TAP(X_HOME) SS_DELAY(100) SS_LSFT(SS_TAP(X_END)) SS_DELAY(100) SS_TAP(X_BSPACE));
+      SEND_STRING(SS_TAP(X_HOME) SS_DELAY(60) SS_LSFT(SS_TAP(X_END)) SS_DELAY(60) SS_TAP(X_BSPACE));
     }
     break;
 
     case ST_MACRO_4:
     if (record->event.pressed) { // clear a whole line and then go into insert mode
-      SEND_STRING( SS_TAP(X_HOME) SS_DELAY(80) SS_LSFT(SS_TAP(X_END)) SS_DELAY(80) SS_TAP(X_BSPACE));
+      SEND_STRING( SS_TAP(X_HOME) SS_DELAY(60) SS_LSFT(SS_TAP(X_END)) SS_DELAY(60) SS_TAP(X_BSPACE));
+      SEND_STRING(SS_UP(X_LSFT)); 
+      visualLock = false;
       layer_invert(2);
     }
     return false;
-    // break;
     
     case ST_MACRO_5:
     if (record->event.pressed) { // copy the line 
-      SEND_STRING(SS_TAP(X_HOME) SS_DELAY(100) SS_LSFT(SS_TAP(X_END)) SS_DELAY(100) SS_LCTL(SS_TAP(X_C)));
+      SEND_STRING(SS_TAP(X_HOME) SS_DELAY(60) SS_LSFT(SS_TAP(X_END)) SS_DELAY(60) SS_LCTL(SS_TAP(X_C)));
     }
     break;
 
     case ST_MACRO_6:
     if (record->event.pressed) { // new line above
-      SEND_STRING(SS_TAP(X_HOME) SS_DELAY(80) SS_TAP(X_ENTER) SS_DELAY(80) SS_TAP(X_UP));
+      SEND_STRING(SS_TAP(X_HOME) SS_DELAY(60) SS_TAP(X_ENTER) SS_DELAY(60) SS_TAP(X_UP));
+      SEND_STRING(SS_UP(X_LSFT)); 
+      visualLock = false;
       layer_invert(2);
     }
     return false;
-    // break;
 
     case ST_MACRO_7:
     if (record->event.pressed) { // paste line above
-      SEND_STRING(SS_TAP(X_HOME) SS_DELAY(100) SS_TAP(X_ENTER) SS_DELAY(100) SS_TAP(X_UP) SS_DELAY(100) SS_LCTL(SS_TAP(X_V)));
+      SEND_STRING(SS_TAP(X_HOME) SS_DELAY(60) SS_TAP(X_ENTER) SS_DELAY(60) SS_TAP(X_UP) SS_DELAY(60) SS_LCTL(SS_TAP(X_V)));
     }
     break;
 
     case ST_MACRO_8:
     if (record->event.pressed) { // i key macro
         SEND_STRING(SS_TAP(X_HOME));
+        SEND_STRING(SS_UP(X_LSFT)); 
+        visualLock = false;
         layer_invert(1);
     }
     return false;
 
     case ST_MACRO_9:
     if (record->event.pressed) { // a key macro
-        SEND_STRING(SS_TAP(X_END));
+        SEND_STRING(SS_TAP(X_END)); 
+        SEND_STRING(SS_UP(X_LSFT)); 
+        visualLock = false;
         layer_invert(1);
     }
     return false;
@@ -225,6 +238,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_10:
     if (record->event.pressed) {
         SEND_STRING(SS_TAP(X_DELETE));
+        SEND_STRING(SS_UP(X_LSFT)); 
+        visualLock = false;
         layer_invert(1);
     }
     return false;
@@ -232,6 +247,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_11:
     if (record->event.pressed) {
         SEND_STRING(SS_TAP(X_DELETE));
+        SEND_STRING(SS_UP(X_LSFT)); 
+        visualLock = false;
         layer_invert(2);
     }
     return false;
@@ -274,8 +291,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case ST_MACRO_18:
     if (record->event.pressed) {
-            SEND_STRING(SS_LCTRL(SS_TAP(X_T)) SS_DELAY(50) SS_LCTRL(SS_TAP(X_L)));
+            SEND_STRING(SS_LCTRL(SS_TAP(X_T)) SS_DELAY(50) SS_LCTRL(SS_TAP(X_L))); 
+            SEND_STRING(SS_UP(X_LSFT)); 
+            visualLock = false;
             layer_invert(1);
+    }
+    return false;
+
+    case ST_MACRO_19:
+    if (record->event.pressed) {
+            if (visualLock == false) {
+                    SEND_STRING(SS_DOWN(X_LSFT));
+                    visualLock = true;
+            }
+            else {
+                    SEND_STRING(SS_UP(X_LSFT));
+                    visualLock = false;
+            }
     }
     return false;
 

@@ -8,6 +8,8 @@
 #define TAPPING_TERM 165
 #define ERGODOX_LED_30
 
+#define ONESHOT_TAP_TOGGLE 1
+
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define FORCE_NKRO
 
