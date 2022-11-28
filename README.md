@@ -48,7 +48,7 @@ If you run into any issues with aftermarket cases, please send me an email to le
 If it's just a one off thing I can't promise I'll be able to do much, but if I get multiple people telling me it doesn't fit common cases I'll definitely see what i can do. 
 
 <p align="center">
-  <img src="images/ebPlankOrtho.png" width="500" title="An early design for the EBPlank66">
+  <img src="images/ebPlankOrtho.jpg" width="500" title="An early design for the EBPlank66">
 </p>
 
 ## Firmware  
