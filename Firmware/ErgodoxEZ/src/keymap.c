@@ -79,6 +79,13 @@ enum tap_dance_codes {
 
 bool visualLock = false;
 
+void layerToggle(int layer)
+{ 
+        SEND_STRING(SS_UP(X_LSFT)); 
+        layer_invert(layer); 
+        visualLock = false;
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
     LALT(KC_TAB),                 UK_1,      UK_2,           UK_3,      UK_4,    UK_5,   UK_6,                                                                 UK_7,        UK_8,   UK_9,    UK_0,      KC_MINUS,   KC_EQUAL,   TG(3),
@@ -158,22 +165,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_0:
     if (record->event.pressed) { // clear to the end of the line
       SEND_STRING( SS_LSFT(SS_TAP(X_END)) SS_DELAY(60) SS_TAP(X_BSPACE));
-      SEND_STRING(SS_UP(X_LSFT)); 
-      visualLock = false;
-      layer_invert(1); 
+      layerToggle(1);
     }
     return false;
-    // break;
 
     case ST_MACRO_1:
     if (record->event.pressed) { // insert on a new line
       SEND_STRING(SS_TAP(X_END) SS_DELAY(60) SS_TAP(X_ENTER));
-      SEND_STRING(SS_UP(X_LSFT)); 
-      visualLock = false;
-      layer_invert(1);
+      layerToggle(1);
     }
     return false;
-    // break;
 
     case ST_MACRO_2:
     if (record->event.pressed) { // paste on the line below
@@ -190,9 +191,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_4:
     if (record->event.pressed) { // clear a whole line and then go into insert mode
       SEND_STRING( SS_TAP(X_HOME) SS_DELAY(60) SS_LSFT(SS_TAP(X_END)) SS_DELAY(60) SS_TAP(X_BSPACE));
-      SEND_STRING(SS_UP(X_LSFT)); 
-      visualLock = false;
-      layer_invert(2);
+      layerToggle(2);
     }
     return false;
     
@@ -205,9 +204,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_6:
     if (record->event.pressed) { // new line above
       SEND_STRING(SS_TAP(X_HOME) SS_DELAY(60) SS_TAP(X_ENTER) SS_DELAY(60) SS_TAP(X_UP));
-      SEND_STRING(SS_UP(X_LSFT)); 
-      visualLock = false;
-      layer_invert(2);
+      layerToggle(2);
     }
     return false;
 
@@ -220,36 +217,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_8:
     if (record->event.pressed) { // i key macro
         SEND_STRING(SS_TAP(X_HOME));
-        SEND_STRING(SS_UP(X_LSFT)); 
-        visualLock = false;
-        layer_invert(1);
+        layerToggle(1);
     }
     return false;
 
     case ST_MACRO_9:
     if (record->event.pressed) { // a key macro
         SEND_STRING(SS_TAP(X_END)); 
-        SEND_STRING(SS_UP(X_LSFT)); 
-        visualLock = false;
-        layer_invert(1);
+        layerToggle(1);
     }
     return false;
 
     case ST_MACRO_10:
     if (record->event.pressed) {
         SEND_STRING(SS_TAP(X_DELETE));
-        SEND_STRING(SS_UP(X_LSFT)); 
-        visualLock = false;
-        layer_invert(1);
+        layerToggle(1);
     }
     return false;
 
     case ST_MACRO_11:
     if (record->event.pressed) {
         SEND_STRING(SS_TAP(X_DELETE));
-        SEND_STRING(SS_UP(X_LSFT)); 
-        visualLock = false;
-        layer_invert(2);
+        layerToggle(2);
     }
     return false;
 
@@ -292,9 +281,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_18:
     if (record->event.pressed) {
             SEND_STRING(SS_LCTRL(SS_TAP(X_T)) SS_DELAY(50) SS_LCTRL(SS_TAP(X_L))); 
-            SEND_STRING(SS_UP(X_LSFT)); 
-            visualLock = false;
-            layer_invert(1);
+            layerToggle(1);
     }
     return false;
 
