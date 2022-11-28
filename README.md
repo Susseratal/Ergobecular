@@ -69,6 +69,7 @@ NOTE: You may run into compile errors if you're on ZSA's branch firmware20 or lo
 </p>
 
 todo:  
+ 
         - [ ] Design variants for 
                 - [ ] split columnar MX 
                 - [ ] split ortho MX
@@ -80,6 +81,7 @@ todo:
         - [ ] Design cases and plates for 3D printing
 
 done:
+
         - [x] Write a design brief
 
 Please do get in touch and let me know what you think of the designs and if you've used any of them. (when they're done of course) Feedback is always appreciated. 
