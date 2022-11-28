@@ -1,52 +1,88 @@
 # Keyboard Firmware
 
 ## The Ergobecular  
-The Ergobecular is a split mechanical keyboard design, designed to be hackable, configurable and customisable. I intend for it to have two versions, one compatible with MX type switches, and one compatible with low profile Kailh Choc switches.  
+The Ergobecular is a layout for a customisable, ergonomic mechanical keyboard. While it's based on my personal layout and preferences, it's designed to be configured and customised to the needs and preferences of you, the user.  
+One of the primary choices made is to focus on smaller key sizes, never going above 1.5 unit keys. This way, stabilisers are completely unneeded, which will make tuning them for acoustics much easier. 
 
-The primary inspirations for the design are a combination of the Ergodox, and the Ferris Sweep and Gergoplex.  
+The main choice will be whether you want a split board, or a plank. In the future, I'd like to create a kind of Alice like design, but for the time being these will be the two main options.  
+In the split category, you'll also be able to choose between columnar and fully ortholinear, while the plank will just be fully ortho for standard case compatibility.  
+You'll also need to choose whether you want MX compatible sockets, or Kailh choc compatible sockets. 
 
-I'd like to include a small screen for displaying information. I like the idea of having it pull system time, as well as displaying layer information. I think it could even be used for fun little gimicks like a compass or something, I'm not sure.  
+Once I've finished making the designs, you should be able to just grab the PCB files you want from this repo and upload them to your PCB manufacturer of choice.  
+Finally, I'll have not only firmware source files for you to start from, I'll also have a precompiled hex file for you to flash straight to the board if you don't have QMK configured, and don't mind using my layout. 
 
-The entire design will be completely open source for you to fork, configure, customise and tweak as you please. 
+When the project is further along, a proper build guide will be available here as well. 
 
-<p align="left">
-  <img src="images/Ergobecular.png" width="500" title="The current end goal for the split">
+## The EBSplit  
+The split version of the Ergobecular is probably the most customisable, as not only does it have options for all the different switches, you can also choose between columnar or fully ortho.  
+
+This version of the board is likely going to be more ergonomic than the plank version, and more versatile if you've got the setup to handle it, but less portable.  
+It'll need an extra TRRS cable to connect the halves, and you'll have to remember to carry around both halves of it, plus additional unpacking time.  
+If you're the type of person who moves between home and the office, this might not be the way to go. 
+
+I'd like to include a small screen for displaying information in this version, as I like the idea of having it pull system time, as well as displaying layer information.  
+I think it could even be used for fun little gimmicks like a compass or something, I'm not sure. Being programmable, I'm sure people will be able to think of some fun stuff to do with this. 
+
+<p align="center">
+  <img src="images/ebSplitColumn.jpg" width="500" title="The current end goal for the split">
 </p>
 
-
-## The EBPlank66
-The design of this board will be fundamentally similar to the Ergobecular, but with a few key differences. The first is that it will be a plank keyboard design, rather than a split one.  
-
-It will also be more of a 60% layout including a number row and various modifier keys. The Ergobecular, on the other hand, is closer to a 40%, lacking any dedicated number keys.  
-
-I think these design choices might make it more accessible to some people who are interested in weirder keyboards, but aren't quite ready to make the jump to a split type yet. This will provide a stepping stone into custom layouts and weird keymaps, as well as the ortholinear layout type, without being too daunting.  
-
-The other advantage for me personally is that I can use an aftermarket case that I've got lying around my office. It will also allow me the opportunity to learn how to design circuit boards without having to worry about the complexities of having two keyboard halves talking to one another.  
-
-Primarily, however, it will carry the same design ethos as the Ergobecular, focussing on being open source and configurable, as well as using 1 to 1.5 unit keys so that you don't have to worry about stabilisers, and can focus on tweaking keymaps and choosing switches.  
-
-Also I couldn't think of a better name, so it's the EBPlank66, which is because it's a 66 key plank variant of the Ergobecular, but lets quietly pretend I gave it a cooler name.
-
-<p align="left">
-  <img src="images/ebPlank.png" width="500" title="An early design for the EBPlank66">
+<p align="center">
+  <img src="images/ebSplitOrtho.jpg" width="500" title="The Ortho variant for the split">
 </p>
 
-## Ergodox firmware  
-This is the firmware that's actually completed, and the ergobecular will be very similar, but more minimal.  
+## The EBPlank  
+The plank version is designed either for someone who's not so fussed about a split design, or has a greater need for portability.  
+While a split keyboard is portable, you can't quite throw it into a bag the same way you can with a regular keyboard.  
 
-The Ergodox firmware contains both the source and a compiled hex file for my Ergodox layout. I have made some tweaks and compiled from source, which is why I include the files rather than just dropping a link to the Oryx page.  
+Because of this, as well as the slightly larger form factor, I see this as being a slightly more beginner friendly variant of the board.  
+A stepping stone for someone who's tentatively interested in building their own keyboard, and wants to try a non-staggered layout, but isn't fully ready to commit to the split.  
+This will also help someone get more used to designing their own layouts, although it would definitely be easier to get a ZSA keyboard, as their online layout tool is excellent, and very easy to use. 
+
+I'm going to build one of these myself so that I can take it with me when I go away so I won't have to switch back to a more standard keyboard.  
+Although that does mean I'm probably going to have to put silent switches in it.  
+
+This will also be designed for compatibility with a lot of generic 60% cases, as this is a 60% keeb, rather than the split variant which is closer to a 40%.  
+The case I'll be using for reference is a Miller GM862 which I've got sat on my shelf, but I'm going to try and include screw holes in standard places where possible.  
+If you run into any issues with aftermarket cases, please send me an email to let me know.  
+If it's just a one off thing I can't promise I'll be able to do much, but if I get multiple people telling me it doesn't fit common cases I'll definitely see what i can do. 
+
+<p align="center">
+  <img src="images/ebPlankOrtho.png" width="500" title="An early design for the EBPlank66">
+</p>
+
+## Firmware  
+This directory is where I'll keep various firmware files for the keyboards, including source and a precompiled hex file.  
+
+I've already got the firmware to my ErgodoxEZ layout, so if you've got an Ergodox and want to give my layout a try, this is the place to get it.  
+The difference between this version and the one made using ZSA's online configuration tool is that this has layer switch on macros available, which ZSA does not have. 
 
 My Ergodox is the Shine variant, so if you have the Glow or non LED variants, it might be prudent to download the necessary firmware and do a diff to see where changes need to be made.  
+Also if you've got a Moonlander, you might also have to make some tweaks to the layout in order to make it work. I've been meaning to design a layout in case I ever get one, but I've not got around to it yet. 
 
 My standard for laying out the firmware is that each column should be 3 spaces away from the longest line on the previous column. This should make it easier to read.  
 
-It's also worth noting that you may run into compile errors if you're on ZSA's branch firmware20 or lower. Firmware 21 is needed for CAPS_WORD
+NOTE: You may run into compile errors if you're on ZSA's branch firmware20 or lower. Firmware 21 is needed for CAPS_WORD, which I am using. 
 
-<p align="left">
+<p align="center">
   <img src="images/ergodox.jpg" width="500" title="My Ergodox on my desk">
 </p>
 
-Do let me know what you think of the keyboards when they're done and what you think of the layouts I've written for them because I'd be very interested to know if anyone else can actually use them. 
+todo:  
+        - [ ] Design variants for 
+                - [ ] split columnar MX 
+                - [ ] split ortho MX
+                - [ ] split columnar Choc
+                - [ ] split ortho Choc
+                - [ ] Plank MX
+                - [ ] Plank Choc
+        - [ ] Design and compile firmware for all of these
+        - [ ] Design cases and plates for 3D printing
+
+done:
+        - [x] Write a design brief
+
+Please do get in touch and let me know what you think of the designs and if you've used any of them. (when they're done of course) Feedback is always appreciated. 
 
 Cheers,  
 ~ Iain xx

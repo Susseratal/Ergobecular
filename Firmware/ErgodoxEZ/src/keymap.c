@@ -66,7 +66,8 @@ enum custom_keycodes {
   ST_MACRO_14,
   ST_MACRO_15,
   ST_MACRO_16,
-  ST_MACRO_17
+  ST_MACRO_17,
+  ST_MACRO_18
 };
 
 enum tap_dance_codes {
@@ -91,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [1] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT,        KC_F1,            KC_F2,            KC_F3,             KC_F4,            KC_F5,            KC_F6,                                                                                  KC_F7,            KC_F8,            KC_F9,            KC_F10,           KC_F11,           KC_F12,                KC_TRANSPARENT,
-    KC_MEDIA_PREV_TRACK,   LCTL(KC_W),       LCTL(KC_RIGHT),   LCTL(KC_L),        LCTL(KC_Y),       KC_TRANSPARENT,   KC_TRANSPARENT,                                                                         KC_TRANSPARENT,   LCTL(KC_C),       LCTL(KC_Z),       ST_MACRO_8,       ST_MACRO_1,       ST_MACRO_2,            KC_MEDIA_NEXT_TRACK,
+    KC_MEDIA_PREV_TRACK,   LCTL(KC_W),       LCTL(KC_RIGHT),   LCTL(KC_L),        LCTL(KC_Y),       ST_MACRO_18,      KC_TRANSPARENT,                                                                         KC_TRANSPARENT,   LCTL(KC_C),       LCTL(KC_Z),       ST_MACRO_8,       ST_MACRO_1,       ST_MACRO_2,            KC_MEDIA_NEXT_TRACK,
     KC_TRANSPARENT,        ST_MACRO_9,       LCTL(KC_S),       LCTL(KC_DELETE),   KC_TRANSPARENT,   TD(DANCE_1),                                                                                                                KC_LEFT,          KC_DOWN,          KC_UP,            KC_RIGHT,         KC_MEDIA_PLAY_PAUSE,   KC_TRANSPARENT,
     KC_TRANSPARENT,        KC_TRANSPARENT,   ST_MACRO_10,      ST_MACRO_0,        KC_INSERT,        LCTL(KC_LEFT),    KC_TRANSPARENT,                                                                         KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,   LCTL(UK_F),            KC_TRANSPARENT,
     KC_TRANSPARENT,        KC_TRANSPARENT,   KC_TRANSPARENT,   KC_TRANSPARENT,    KC_TRANSPARENT,                                                                                                                                                 KC_TRANSPARENT,   ST_MACRO_16,      ST_MACRO_17,      RGB_MOD,               RGB_TOG,
@@ -271,7 +272,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return false;
 
-    // put a macro in here in order to delete a word and then layer switch - bind to 1C and then bind the clear a full line to 2C
+    case ST_MACRO_18:
+    if (record->event.pressed) {
+            SEND_STRING(SS_LCTRL(SS_TAP(X_T)) SS_DELAY(50) SS_LCTRL(SS_TAP(X_L)));
+            layer_invert(1);
+    }
+    return false;
 
     case RGB_SLD:
       if (record->event.pressed) {
@@ -301,6 +307,7 @@ uint32_t layer_state_set_user(uint32_t state) {
         ergodox_right_led_1_on();
         break;
       case 2:
+        ergodox_right_led_1_on();
         ergodox_right_led_2_on();
         break;
       case 3:
@@ -309,6 +316,7 @@ uint32_t layer_state_set_user(uint32_t state) {
       case 4:
         ergodox_right_led_1_on();
         ergodox_right_led_2_on();
+        ergodox_right_led_3_on();
         break;
       case 5:
         ergodox_right_led_1_on();
@@ -357,16 +365,6 @@ uint32_t layer_state_set_user(uint32_t state) {
           rgblight_sethsv_noeeprom(86,255,255);
         }
         break;
-        /*
-      case 4:
-        if(!disable_layer_color) {
-          rgblight_enable_noeeprom();
-          rgblight_mode_noeeprom(1);
-          rgblight_sethsv_noeeprom(213,255,255);
-          // rgblight_sethsv_noeeprom(255,255,255);
-        }
-        break;
-        */
       default:
         if(!disable_layer_color) {
           rgblight_config.raw = eeconfig_read_rgblight();
