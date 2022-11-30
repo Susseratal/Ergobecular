@@ -1,4 +1,4 @@
-# Keyboard Firmware
+# Ergobecular Readme
 
 ## The Ergobecular  
 The Ergobecular is a layout for a customisable, ergonomic mechanical keyboard. While it's based on my personal layout and preferences, it's designed to be configured and customised to the needs and preferences of you, the user.  
@@ -52,23 +52,20 @@ If it's just a one off thing I can't promise I'll be able to do much, but if I g
 </p>
 
 ## Firmware  
-This directory is where I'll keep various firmware files for the keyboards, including source and a precompiled hex file.  
-
-I've already got the firmware to my ErgodoxEZ layout, so if you've got an Ergodox and want to give my layout a try, this is the place to get it.  
-The difference between this version and the one made using ZSA's online configuration tool is that this has layer switch on macros available, which ZSA does not have. 
+The firmware has moved! I'm no longer keeping my firmware source here, rather I am including the source, as well as the precompiled binaries for all my keyboard layouts in [my own fork of the QMK firmware](https://github.com/susseratal/qmk_firmware)! 
 
 My Ergodox is the Shine variant, so if you have the Glow or non LED variants, it might be prudent to download the necessary firmware and do a diff to see where changes need to be made.  
-Also if you've got a Moonlander, you might also have to make some tweaks to the layout in order to make it work. I've been meaning to design a layout in case I ever get one, but I've not got around to it yet. 
+Also if you've got a Moonlander, you might also have to make some tweaks to the layout in order to make it work. I've been meaning to make versions of my layout for these keyboards too, but it's just a matter of finding the time. 
+
+The difference between my firmware, and the version of my Ergodox layout available on ZSA's online configurator is that I've got a set of custom macro functions to make typing and editing text more "vim" like. The Oryx configurator does not, unfortunately, have support for layer switch on macro.  
 
 My standard for laying out the firmware is that each column should be 3 spaces away from the longest line on the previous column. This should make it easier to read.  
-
-NOTE: You may run into compile errors if you're on ZSA's branch firmware20 or lower. Firmware 21 is needed for CAPS_WORD, which I am using. 
 
 <p align="center">
   <img src="images/ergodox.jpg" width="500" title="My Ergodox on my desk">
 </p>
 
-todo:  
+## Todo:  
  
         - [ ] Design variants for 
                 - [ ] split columnar MX 
@@ -80,9 +77,10 @@ todo:
         - [ ] Design and compile firmware for all of these
         - [ ] Design cases and plates for 3D printing
 
-done:
+## Done:
 
         - [x] Write a design brief
+        - [x] Custom qmk fork :)
 
 Please do get in touch and let me know what you think of the designs and if you've used any of them. (when they're done of course) Feedback is always appreciated. 
 
